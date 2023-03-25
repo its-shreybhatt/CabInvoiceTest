@@ -28,4 +28,14 @@ public class CabInvoiceTest {
         double invoice = cabInvoice.invoiceGenerator(rides);
         Assert.assertEquals(73, invoice, 0.0);
     }
+
+    @Test
+    public void givenDistanceAndTime_ForMultipleRide_ShouldReturnSummary() {
+        CabInvoice cabInvoice = new CabInvoice();
+        Ride[] rides = {new Ride(2,2),
+                        new Ride(5,1)};
+        InvoiceSummary summary = cabInvoice.invoiceGeneratorNew(rides);
+        InvoiceSummary expectedSummary = new InvoiceSummary(2, 73);
+        Assert.assertEquals(expectedSummary, summary);
+    }
 }
