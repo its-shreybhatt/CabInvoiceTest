@@ -10,6 +10,5 @@ public class CabInvoiceTest {
         CabInvoice cabInvoice = new CabInvoice();
         double invoice = cabInvoice.invoiceGenerator(distance, time);
         Assert.assertEquals(22, invoice, 0.0);
-
     }
 }
