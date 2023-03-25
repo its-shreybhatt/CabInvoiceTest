@@ -42,13 +42,28 @@ public class CabInvoiceTest {
     @Test
     public void givenDistanceAndTime_ShouldReturnInvoiceService() {
         CabInvoice cabInvoice = new CabInvoice();
+        String type="normal";
         Ride[] rides = {new Ride(2,2),
                         new Ride(5,1)};
 
         Ride[] userTwo = {new Ride(3,1),
                           new Ride(1,5)};
-        InvoiceSummary summary = cabInvoice.invoiceGeneratorList(rides,userTwo);
+        InvoiceSummary summary = cabInvoice.invoiceGeneratorList(rides,userTwo,type);
         InvoiceSummary expectedSummary = new InvoiceSummary(2, 119);
+        Assert.assertEquals(expectedSummary, summary);
+    }
+
+    @Test
+    public void givenDistanceAndTime_ShouldReturnCategoryInvoice() {
+        CabInvoice cabInvoice = new CabInvoice();
+        String type="premium";
+        Ride[] rides = {new Ride(2,2),
+                new Ride(5,1)};
+
+        Ride[] userTwo = {new Ride(3,1),
+                new Ride(1,5)};
+        InvoiceSummary summary = cabInvoice.invoiceGeneratorList(rides,userTwo,type);
+        InvoiceSummary expectedSummary = new InvoiceSummary(2, 145);
         Assert.assertEquals(expectedSummary, summary);
     }
 }
